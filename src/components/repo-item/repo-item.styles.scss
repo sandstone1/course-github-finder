@@ -1,0 +1,16 @@
+
+
+.repo-item {
+    margin : 3.0rem 0 3.0rem 0;
+
+    border-radius : 4px;
+    
+    background: linear-gradient( 90deg, rgba( 40, 21, 105, 1 ) 0%, rgba( 6, 156, 75, 0.9542191876750701 ) 35%, rgba( 0, 67, 255 , 1) 100% );
+
+    > h3 > a {
+        display : block;
+        width   : 100%;
+
+        color : rgba( 255, 255, 255, 1 );
+    }
+}

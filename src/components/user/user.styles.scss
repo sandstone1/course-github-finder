@@ -1,0 +1,50 @@
+
+
+.user {
+    &--back-button {
+        margin : 0 30px 0 0;
+
+        font-size      : 1.5rem;
+        text-transform : uppercase;
+    }
+
+    &--check {
+        vertical-align : -1px;
+    }
+
+    &--x {
+        vertical-align : -1px;
+    }
+
+    &--card-1-img {
+        width : 150px;
+    
+        border-radius : 50%;
+    }
+
+    &--card-1-h2 {
+        margin : 15px 0 5px 0;
+    }
+
+    &--github-button {
+        margin : 30px 0 !important;
+
+        font-size      : 1.5rem; 
+        text-transform : uppercase;
+    }
+
+    &--card-3-h3 {
+        margin : 80px 0 0 0;
+    }
+}
+
+
+@media screen and ( max-width : 768px ) {
+
+    .user {
+        &--card-3-h3 {
+            margin : 60px 0 0 0;
+        }
+    }
+
+};

@@ -1,0 +1,16 @@
+
+
+.users {
+    display               : grid;
+    grid-template-columns : repeat( 3, 1fr );
+    grid-gap              : 2.5rem 2.5rem; // A shorthand for row-gap and column-gap
+};
+
+
+@media screen and ( max-width : 768px ) {
+
+    .users {
+        grid-template-columns : 1fr;
+        grid-gap              : 4.0rem 2.5rem; // A shorthand for row-gap and column-gap
+    }
+};

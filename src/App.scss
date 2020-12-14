@@ -1,0 +1,671 @@
+
+
+
+
+// the color variables and font variables were taken from Jonus' _base.scss file
+
+
+// ==============================
+// COLOR VARIABLES
+// ==============================
+
+$color-primary      : rgba( 198, 153, 99, 1 );
+$color-primary-dark : rgba( 178, 132, 81, 1 );
+
+$color-secondary    : rgba( 16, 29, 44, 1 );
+$color-secondary-2  : rgba( 16, 29, 44, 0.85 );
+
+$color-grey-light-1 : rgba( 249, 247, 246, 1 );
+$color-grey-light-2 : rgba( 170, 170, 170, 1 );
+
+
+$color-grey-dark-1 : rgba( 84, 72, 58, 1 );
+$color-grey-dark-2 : rgba( 109, 93, 75, 1 );
+
+
+// from Mozilla: " Property names that are prefixed with --, like --example-name, represent
+// custom properties that contain a value that can be used in other declarations using the
+// var() function. "
+:root {
+    --red-color        : rgba( 220, 53, 69, 1 );
+    --dark-color       : rgba( 51, 51, 51, 1 );
+    --light-color      : rgba( 240, 240, 240, 1 );
+    --danger-color     : rgba( 220, 53, 69, 1 );
+    --success-color    : rgba( 46, 139, 87, 1 );
+    --blue-color       : rgba( 64, 99, 171, 1);
+    --slate-gray-color : rgba( 112, 128, 144, 1 );
+    --medium-color     : rgba( 78, 78, 78, 1 );
+}
+
+
+
+// ==============================
+// FONT VARIABLES
+// ==============================
+
+$font-primary-1  : 'Open Sans', Arial, sans-serif;
+$font-primary-2  : 'Nunito', Arial, sans-serif;
+$font-display-1  : 'Open Sans Condensed', Arial, sans-serif;
+$font-display-2  : 'Josefin Sans', Arial, sans-serif;
+
+
+
+// responsive change #6
+// responsive change #14
+// responsive change #17
+
+// Jonus like to see where the design breaks and then create a breakpoint at the nearest 100
+// pixel value so if the design breaks at 550px, for example, then Jonus will create a
+// breakpoint at 600px
+
+
+// ==============================
+// RESPONSIVE BREAKPOINTS
+// ==============================
+
+$bp-largest : 80em;   // 1280px / 16px or the average font size in most browsers = 80em
+$bp-large   : 62.5em; // 1000px / 16px or the average font size in most browsers = 62.5em
+$bp-medium  : 50em; // 800px / 16px or the average font size in most browsers = 50em
+$bp-small   : 37.5em; // 600px / 16px or the average font size in most browsers = 37.5em
+
+
+
+// ==============================
+// BUTTON MIXIN
+// ==============================
+
+@mixin button {
+    padding : 1.8rem 3.0rem;
+
+    border        : none; // get rid of the default border
+    border-radius : 0; // get rid of the default radius 
+
+    font-family    : $font-display-2;
+    font-size      : 1.5rem;  
+    color          : rgba( 255, 255, 255, 1 );
+    text-transform : uppercase; 
+
+    background-color : $color-primary;
+
+    transition : all 0.2s ease-out; 
+    cursor     : pointer;
+
+    &:hover {
+        background-color : $color-primary-dark;
+    }
+}
+
+
+
+
+// ==============================
+// MY BASE STYLES
+// ==============================
+
+// Jonus said to start with a global reset
+*,
+*::before,
+*::after {
+    margin  : 0;
+    padding : 0;
+
+    box-sizing : border-box;
+}
+
+
+// styles for the html section
+html {
+    font-size : 62.5%; // 1 rem = 10px
+    
+    // responsive change #7
+    @media only screen and ( max-width : $bp-largest ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 50.0%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1200px, now our font will be reduced to 16px ( 50% * 16px = 8px * 2rem = 16px )
+        // automatically on small screens or screens less than 1200px and all this is the
+        // result from using this one media query
+
+        // so now 1rem equals 8px
+
+        // I tested this and it works and looks good
+
+        // once our viewport shrinks to 1000px and below then we'll move the sidebar to the
+        // top of the container and to do that let's start by adding a new breakpoint above
+        // and then go to homepage.styles.scss
+
+        font-size : 50%;
+
+    }
+
+}
+
+
+// styles for the body section
+body {
+    overflow-x : hidden; // get rid of horizontal scroll bar
+
+    font-family : $font-primary-2;
+    font-size   : 1.6rem; 
+    font-weight : 300;
+    color       : var(--dark-color);
+    line-height : 1.6;
+
+    // background : rgba( 227, 227, 232, 1 );
+    // let's go with a white background for this site
+    background : rgba( 255, 255, 255, 1 );    
+
+    @media all and ( max-width : 480px ) {
+
+        background : rgba( 255, 255, 255, 1 );
+
+    }
+
+    @media all and ( max-width : 320px ) {
+
+        overflow-x : scroll;
+
+    }
+}
+
+
+a {
+    color           : var(--red-color);
+    text-decoration : none;
+}
+
+
+ul {
+    list-style : none;
+}
+
+
+// w3schools said: " How To Create Responsive Images? If you want the image to scale
+// both up and down on responsiveness, set the CSS width property to 100% and height
+// to auto ( i.e. { width : 100%; height : auto; } ) " and " If you want an image to
+// scale down if it has to, but never scale up to be larger than its original size,
+// use max-width: 100%; ( i.e. { max-width : 100%; height : auto; } ) "
+img {
+    max-width : 100%;
+    height    : auto;
+}
+
+
+// special styles to apply to all pages
+input::-moz-focus-inner { // remove input padding in FF
+	padding : 0;
+
+	border  : 0;
+}
+
+
+// make sure IE10 works in snap mode
+@-ms-viewport {
+	width : device-width;
+}
+
+
+// Utilities
+.container {
+    max-width : 1100px;
+    margin    : 30px auto;
+    padding   : 0 3.2rem;
+
+    overflow : hidden;
+}
+
+
+// Text Styles
+.x-large {
+    margin: 0 0 1.6rem 0;
+
+    font-size   : 6.4rem;
+    line-height : 1.2;
+}
+
+.large {
+    margin: 0 0 1.6rem 0;
+
+    font-size   : 4.8rem;
+    line-height : 1.2;
+}
+
+.lead {
+    margin: 0 0 1.6rem 0;
+
+    font-size : 2.2rem;
+}
+
+.text-primary {
+    color : var(--primary-color);
+}
+
+.text-dark {
+    color : var(--dark-color);
+}
+
+.text-success {
+    color : var(--success-color);
+}
+
+.text-danger {
+    color : var(--danger-color);
+}
+
+.text-center {
+    text-align : center;
+}
+
+.text-right {
+    text-align : right;
+}
+
+.text-left {
+    text-align : left;
+}
+
+
+// Center All
+.all-center {
+    display         : grid;
+    justify-content : center;
+    align-content   : center;
+    justify-items   : center;
+    align-items     : center;
+}
+
+
+// Cards
+.card {
+    margin  : 3.0rem 0 8.0rem 0;
+    padding : 1.6rem;
+
+    border : rgba( 204, 204, 204, 1 ) 1px dotted;
+}
+
+.card-small {
+    margin  : 0 0 0 0;
+    padding : 2.0rem;
+
+    border : rgba( 204, 204, 204, 1 ) 1px dotted;
+}
+
+
+// List
+.list {
+    margin : 0.8rem 0;
+}
+
+.list li {
+    padding: 0 0 0.5rem 0;
+}
+
+
+// Padding
+.p {
+    padding : 0.5rem;
+}
+.p-1 {
+    padding : 1.6rem;
+}
+.p-2 {
+    padding : 3.2rem;
+}
+.p-3 {
+    padding: 4.8rem;
+}
+.py {
+    padding : 0.8rem 0;
+}
+.py-1 {
+    padding : 1.6rem 0;
+}
+.py-2 {
+    padding : 3.2rem 0;
+}
+.py-3 {
+    padding : 4.8rem 0;
+}
+
+
+// Margin
+.m {
+    margin : 0.8rem;
+}
+.m-1 {
+    margin : 1.6rem;
+}
+.m-2 {
+    margin : 3.2rem;
+}
+.m-3 {
+    margin : 4.8rem;
+}
+.my {
+    margin : 0.8rem 0;
+}
+.my-1 {
+    margin : 1.6rem 0;
+}
+.my-2 {
+    margin : 3.2rem 0;
+}
+.my-3 {
+    margin : 4.8rem 0;
+}
+
+
+// Grid
+.grid-2 {
+    display               : grid;
+    grid-template-columns : repeat( 2, 1fr );
+    grid-gap              : 1.6rem;
+}
+
+.grid-3 {
+    display               : grid;
+    grid-template-columns : repeat( 3, 1fr );
+    grid-gap              : 1.6rem;
+}
+
+.grid-4 {
+    display               : grid;
+    grid-template-columns : repeat( 4, 1fr );
+    grid-gap              : 1.6rem;
+}
+
+.btn {
+    display : inline-block;
+    margin  : 0 0.8rem 0 0;
+    padding : 1.0rem 2.2rem;
+
+    border        : none;
+    border-radius : 4px;
+
+    font-size : 1.6rem;
+    color     : #333;
+
+    background : var(--light-color);
+    outline    : none;
+    cursor     : pointer;
+
+    transition : all 0.2s ease-out;
+}
+
+.btn-sm {
+    margin  : 0 0 0 0;
+    padding : 0.5rem 1.6rem;
+
+    font-size : 1.3rem;
+}
+
+.btn-link {
+    margin : 0;
+    padding : 0;
+
+    background : none;
+}
+
+.btn-block {
+    display : block;
+    width   : 100%;
+}
+
+.badge {
+    display : inline-block;
+    margin  : 0.6rem;
+    padding : 0.3rem 1.1rem;
+
+    border-radius : 5px;
+
+    font-size  : 1.3rem;
+    color      : rgba( 51, 51, 51, 1 );
+    text-align : center;
+    
+    background : var(--light-color);
+
+    opacity : 1.0;
+}
+
+.alert {
+    margin  : 1.6rem 0;
+    padding : 1.1rem;
+
+    color : rgba( 51, 51, 51, 1 );
+    
+    background : var(--light-color);
+
+    opacity : 0.9;
+}
+
+
+.btn-primary,
+.bg-primary,
+.badge-primary,
+.alert-primary {
+    color: rgba( 255, 255, 255, 1 );
+
+    background : var(--primary-color);
+}
+
+
+.btn-light,
+.bg-light,
+.badge-light,
+.alert-light {
+    color : rgba( 51, 51, 51, 1 );
+
+    background : var(--light-color);
+}
+
+
+.btn-dark,
+.bg-dark,
+.badge-dark,
+.alert-dark {
+    color : rgba( 255, 255, 255, 1 );
+
+    background : var(--dark-color);
+}
+
+.btn-danger,
+.bg-danger,
+.badge-danger,
+.alert-danger {
+    color : rgba( 255, 255, 255, 1 );
+
+    background : var(--danger-color);
+}
+
+.btn-success,
+.bg-success,
+.badge-success,
+.alert-success {
+    color : rgba( 255, 255, 255, 1 );
+
+    background : var(--success-color);
+}
+
+.btn-white,
+.bg-white,
+.badge-white,
+.alert-white {
+    border : rgba(204, 204, 204, 1) solid 1px;
+
+    color : rgba( 51, 51, 51, 1 );
+
+    background : rgba( 255, 255, 255, 1 );
+}
+
+.btn-blue,
+.bg-blue,
+.badge-blue,
+.alert-blue {
+    color : rgba( 255, 255, 255, 1 );
+
+    background : var(--blue-color);
+
+    transition : opacity 0.3s ease-in;
+}
+
+.btn-slate-gray,
+.bg-slate-gray,
+.badge-slate-gray,
+.alert-slate-gray {
+    color : rgba( 255, 255, 255, 1 );
+
+    background : var(--slate-gray-color);
+}
+
+.btn-medium,
+.bg-medium,
+.badge-medium,
+.alert-medium {
+    color : rgba( 255, 255, 255, 1 );
+
+    background : var(--medium-color);
+}
+
+.btn:hover {
+    opacity : 0.9;
+}
+
+.bg-light,
+.badge-light {
+    border : rgba( 204, 204, 204, 1 ) solid 1px;
+}
+
+.round-img {
+    border-radius : 50%;
+}
+
+
+// Forms
+input {
+    margin : 1.9rem 0;
+}
+
+.form-text {
+    display    : block;
+    margin-top : 0.5rem;
+
+    color : rgba( 136, 136, 136, 1 );
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select,
+textarea {
+    display : block;
+    width   : 100%;
+    padding : 0.8rem;
+
+    border : 1px solid rgba( 204, 204, 204, 1 );
+
+    font-size : 1.8rem;
+}
+
+input[type='submit'],
+button {
+    font-size : 1.8rem;
+}
+
+table th,
+table td {
+    padding : 1rem;
+
+    text-align : left;
+}
+
+table th {
+    background : var(--light-color);
+}
+
+
+// Navbar
+.navbar {
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+    z-index         : 1;
+    width           : 100%;
+    margin          : 0 0 1.6rem 0;
+    padding         : 1.2rem 3.2rem;
+
+    opacity : 0.9;
+}
+
+.navbar ul {
+    display : flex;
+}
+
+.navbar a {
+    margin  : 0 0.4rem;
+    padding : 0.72rem;
+
+    color: rgba( 255, 255, 255, 1 );    
+}
+
+.navbar a:hover {
+    color: var(--light-color);
+}
+
+.navbar .welcome span {
+    margin: 0 0.96rem 0 0;
+}
+
+
+// Mobile Styles
+@media ( max-width: 768px ) {
+    .hide-sm {
+        display : none;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns : 1fr;
+        grid-gap              : 2.4rem 0;
+    }
+
+    // Text Styles
+    .x-large {
+        font-size : 4.8rem;
+    }
+
+    .large {
+        font-size : 3.2rem;
+    }
+
+    .lead {
+        font-size : 1.6rem;
+    }
+
+    // Navbar
+    .navbar {
+        display    : block;
+
+        text-align : center;
+    }
+
+    .navbar ul {
+        justify-content : center;
+
+        text-align : center;
+    }
+
+    .card {
+        display : grid;
+        grid-template-columns: 1fr;
+        margin  : 3.0rem 0 6.0rem 0;
+        padding : 1.6rem;
+    
+        border : rgba( 204, 204, 204, 1 ) 1px dotted;
+    }
+
+
+}
