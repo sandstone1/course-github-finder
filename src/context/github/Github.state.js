@@ -353,7 +353,7 @@ if ( process.env.NODE_ENV !== 'production' ) {
 
 // and now let's replace the variables below with " githubClientId " and " githubClientSecret "
 
-// go app-css-grid-react-nexter.js to see the steps to deploy to Netlify
+// go app-css-grid-react-nexter.js to see the steps to deploy to Netlify 
 
 // End of 7 -
 
