@@ -392,6 +392,11 @@ input::-moz-focus-inner { // remove input padding in FF
     cursor     : pointer;
 
     transition : all 0.2s ease-out;
+
+    // added to make sure the mobile input buttons looked the same as the desktop version
+    -webkit-appearance: none; 
+    -moz-appearance:    none;
+    appearance:         none;
 }
 
 .btn-sm {
