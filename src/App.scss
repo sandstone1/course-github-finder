@@ -283,14 +283,14 @@ input::-moz-focus-inner { // remove input padding in FF
     margin  : 3.0rem 0 8.0rem 0;
     padding : 1.6rem;
 
-    border : rgba( 192, 192, 192, 1 ) 1px dotted;
+    border : rgba( 204, 204, 204, 1 ) 1px dotted;
 }
 
 .card-small {
     margin  : 0 0 0 0;
     padding : 2.0rem;
 
-    border : rgba( 192, 192, 192, 1 ) 1px dotted;
+    border : rgba( 204, 204, 204, 1 ) 1px dotted;
 }
 
 
@@ -637,16 +637,17 @@ table th {
 
 // Mobile Styles
 @media ( max-width: 768px ) {
-    .hide-sm {
-        display : none;
+
+    // Cards
+    .card {
+        display               : grid;
+        grid-template-columns : 1fr;
+        margin                : 3.0rem 0 6.0rem 0;
+        padding               : 1.6rem;
+    
+        border : rgba( 204, 204, 204, 1 ) 1px dotted;
     }
 
-    .grid-2,
-    .grid-3,
-    .grid-4 {
-        grid-template-columns : 1fr;
-        grid-gap              : 2.4rem 0;
-    }
 
     // Text Styles
     .x-large {
@@ -661,6 +662,20 @@ table th {
         font-size : 1.6rem;
     }
 
+
+    // Grid
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns : 1fr;
+        grid-gap              : 2.4rem 0;
+    }
+
+    .badge {
+        margin  : 0.8rem 0.6rem;
+    }
+
+
     // Navbar
     .navbar {
         display    : block;
@@ -674,14 +689,10 @@ table th {
         text-align : center;
     }
 
-    .card {
-        display               : grid;
-        grid-template-columns : 1fr;
-        margin                : 3.0rem 0 6.0rem 0;
-        padding               : 1.6rem;
-    
-        border : rgba( 192, 192, 192, 1 ) 1px dotted;
-    }
 
+    // Misc
+    .hide-sm {
+        display : none;
+    }
 
 }
