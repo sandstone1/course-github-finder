@@ -17,7 +17,14 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+# misc project files
 app-react-front-to-back.js
+/src/old_App.css
+/src/old_App.js
+/src/old_App.test.js
+/src/old_index.css
+/src/old_index.js
 
 npm-debug.log*
 yarn-debug.log*
