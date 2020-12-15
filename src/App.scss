@@ -118,7 +118,7 @@ html {
     font-size : 62.5%; // 1 rem = 10px
     
     // responsive change #7
-    @media only screen and ( max-width : $bp-largest ) {
+    @media all and ( max-width : $bp-largest ) {
 
         // remember we want to reduce the font on smaller screens and we do that by using
         // media queries and changing the font size, in this case, from
