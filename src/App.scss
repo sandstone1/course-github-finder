@@ -30,6 +30,7 @@ $color-grey-dark-2 : rgba( 109, 93, 75, 1 );
     --red-color        : rgba( 220, 53, 69, 1 );
     --dark-color       : rgba( 51, 51, 51, 1 );
     --light-color      : rgba( 240, 240, 240, 1 );
+    --silver-color     : rgba( 211, 211, 211, 1 );
     --danger-color     : rgba( 220, 53, 69, 1 );
     --success-color    : rgba( 46, 139, 87, 1 );
     --blue-color       : rgba( 64, 99, 171, 1);
@@ -282,14 +283,14 @@ input::-moz-focus-inner { // remove input padding in FF
     margin  : 3.0rem 0 8.0rem 0;
     padding : 1.6rem;
 
-    border : rgba( 204, 204, 204, 1 ) 1px dotted;
+    border : rgba( 192, 192, 192, 1 ) 1px dotted;
 }
 
 .card-small {
     margin  : 0 0 0 0;
     padding : 2.0rem;
 
-    border : rgba( 204, 204, 204, 1 ) 1px dotted;
+    border : rgba( 192, 192, 192, 1 ) 1px dotted;
 }
 
 
@@ -421,7 +422,7 @@ input::-moz-focus-inner { // remove input padding in FF
 .badge {
     display : inline-block;
     margin  : 0.6rem;
-    padding : 0.3rem 1.1rem;
+    padding : 0.5rem 1.2rem;
 
     border-radius : 5px;
 
@@ -463,6 +464,16 @@ input::-moz-focus-inner { // remove input padding in FF
     color : rgba( 51, 51, 51, 1 );
 
     background : var(--light-color);
+}
+
+
+.btn-silver,
+.bg-silver,
+.badge-silver,
+.alert-silver {
+    color : rgba( 30, 30, 30, 1 );
+
+    background : var(--silver-color);
 }
 
 
@@ -664,12 +675,12 @@ table th {
     }
 
     .card {
-        display : grid;
-        grid-template-columns: 1fr;
-        margin  : 3.0rem 0 6.0rem 0;
-        padding : 1.6rem;
+        display               : grid;
+        grid-template-columns : 1fr;
+        margin                : 3.0rem 0 6.0rem 0;
+        padding               : 1.6rem;
     
-        border : rgba( 204, 204, 204, 1 ) 1px dotted;
+        border : rgba( 192, 192, 192, 1 ) 1px dotted;
     }
 
 

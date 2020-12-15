@@ -15,7 +15,7 @@ import './repo-item.styles.scss';
 
     return (
 
-        <div className="card repo-item">
+        <div className="card repo-item" style={ { margin : '4.0rem 0' } }>
 
             <h3>
                 <a 

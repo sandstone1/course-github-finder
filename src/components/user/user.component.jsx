@@ -438,13 +438,13 @@ const User = ( { match } ) => {
 
 
                 { /* button */ }
-                <Link to="/" className="btn btn-light user--back-button">
+                <Link to="/" className="btn btn-blue user--back-button" style={ { marginRight: '2.0rem' } }>
                     Back to Search
                 </Link>
 
 
                 { /* font awesome checkbox and applied differet color checkmark and the x */ }
-                <span>Hireable:&nbsp;</span>
+                <span>Hireable:</span>
                 { hireable ? (
 
                     <i 
@@ -524,7 +524,7 @@ const User = ( { match } ) => {
                 <div className="card text-center">
                     <div className="badge badge-blue">Followers: { followers }</div>
                     <div className="badge badge-success">Following: { following }</div>
-                    <div className="badge badge-light">Public Repos: { public_repos }</div>
+                    <div className="badge badge-silver">Public Repos: { public_repos }</div>
                     <div className="badge badge-medium">Public Gists: { public_gists }</div>
                 </div>
 
