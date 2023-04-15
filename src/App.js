@@ -988,7 +988,7 @@ export default App;
 import React from 'react';
 
 import GithubState from './context/github/Github.state';
-import AlertState from './context/alert/alert.state';
+import AlertState from './context/alert/Alert.state';
 
 import NavBar from './components/nav-bar/nav-bar.component';
 import Alert from './components/alert/alert.component';

@@ -1,4 +1,5 @@
 
+/*
 import React, { useContext } from 'react';
 import './alert.styles.scss';
 
@@ -51,3 +52,70 @@ const Alert = () => {
 
 
 export default Alert;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+
+
+
+
+
+
+
+
+
+
+
+
+// at the beginning of lecture 35, given all the notes, I created a new file below without
+// the notes so we are starting fresh
+
+
+import React, { useContext } from 'react';
+
+import './alert.styles.scss';
+
+import AlertContext from '../../context/alert/alert.context';
+
+
+const Alert = () => {
+
+    // initialize the AlertContext
+    const alertContext = useContext( AlertContext );
+    // let's destructure off " alert " from the alertContext
+    const { alert } = alertContext;
+
+    return (
+
+        alert !== null && (
+
+            <div className={ `alert alert-${ alert.type }` }>
+                <i
+                    className="fas fa-info-circle"
+                >
+                </i>{ alert.message }
+            </div>
+
+        )
+
+    );
+
+}
+
+
+export default Alert;
+
+
+

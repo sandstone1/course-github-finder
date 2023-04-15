@@ -403,7 +403,7 @@ export default Search;
 // the notes so we are starting fresh
 
 
-
+/*
 import React, { useContext, useState } from 'react';
 
 import './search.styles.scss';
@@ -552,3 +552,142 @@ const Search = () => {
 
 
 export default Search;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// at the beginning of lecture 35, given all the notes, I created a new file below without
+// the notes so we are starting fresh
+
+
+
+import React, { useContext, useState } from 'react';
+
+import './search.styles.scss';
+
+import GithubContext from '../../context/github/github.context';
+import AlertContext from '../../context/alert/alert.context';
+
+
+const Search = () => {
+
+    // GithubContext
+    // initialize our GithubContext by using the useContext() hook
+    const githubContext = useContext( GithubContext );
+    const { users, clearUsers } = githubContext;
+
+    // AlertContext
+    // initialize the AlertContext
+    const alertContext = useContext( AlertContext );
+    const { setAlert, removeAlert } = alertContext;
+
+    // State
+    const [ text, setText ] = useState( '' );
+
+
+    const onSubmit = ( e ) => {
+
+        e.preventDefault();
+
+        if ( text === '' ) {
+
+            setAlert( 'Please enter something', 'light' );
+
+        }
+        else {
+
+            // connect the searchUsers function to the Github context
+            githubContext.searchUsers( text );
+
+            // clear the form
+            setText( '' );
+
+        }
+
+    }
+
+    const onChange = ( e ) => {
+
+        setText( e.target.value );
+
+
+    }
+
+    const onFocus = ( e ) => {
+
+        // clear out the alert message as soon as the user puts focus in the search field
+        removeAlert();
+
+    }
+
+
+    return (
+
+        <div className="search-container">
+
+            <form onSubmit={ onSubmit } className="search-container--form">
+
+                <input
+                    type="text"
+                    name="text"
+                    label="text"
+                    placeholder="Search Users"
+                    className="search-container--input-label"
+                    value={ text }
+                    onChange={ onChange }
+                    onFocus={ onFocus }
+                />
+                <input
+                    type="submit"
+                    value="Search"
+                    className="btn btn-dark btn-block"
+                />
+
+            </form>
+
+            {
+                users.length > 0 && (
+                    <button
+                        className="btn btn-blue btn-block search-container--btn-clear"
+                        onClick={ clearUsers }
+                        style={ { margin : '15px 0 0 0', fontSize : '1.8rem' } }
+                    >
+                        Clear
+                    </button>
+                )
+            }
+
+        </div>
+
+    );
+
+}
+
+
+export default Search;
+

@@ -1,4 +1,4 @@
-
+/*
 import React from 'react';
 import './nav-bar.styles.scss';
 
@@ -93,3 +93,73 @@ NavBar.propTypes = {
 
 
 export default NavBar;
+*/
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+
+
+
+
+
+
+
+
+
+
+
+// at the beginning of lecture 35, given all the notes, I created a new file below without
+// the notes so we are starting fresh
+
+
+import React from 'react';
+import PropTypes from 'prop-types';
+// and in react we want to use " Link " from react-router-dom to navigate around the site
+import { Link } from 'react-router-dom';
+
+import './nav-bar.styles.scss';
+
+
+const NavBar = ( { icon, title } ) => {
+
+    return (
+
+        <nav className="navbar">
+
+            <h1>
+                <i className={ icon }></i>&nbsp;{ title }
+            </h1>
+
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
+                </li>                
+            </ul>
+
+        </nav>
+
+    );
+
+}
+
+
+NavBar.propTypes = {
+    icon  : PropTypes.string.isRequired,
+    title : PropTypes.string.isRequired
+};
+
+
+export default NavBar;
+

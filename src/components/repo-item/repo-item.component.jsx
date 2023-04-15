@@ -1,6 +1,5 @@
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import './repo-item.styles.scss';
 
 
@@ -32,11 +31,6 @@ import './repo-item.styles.scss';
     );
 
 }
-
-
-RepoItem.propTypes = {
-    repo : PropTypes.object.isRequired
-};
 
 
 export default RepoItem;

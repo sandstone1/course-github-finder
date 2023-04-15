@@ -121,7 +121,7 @@ export default Users;
 
 // End of 3 -
 
-
+/*
 import React, { useContext } from 'react';
 import UserItem from '../user-item/user-item.component';
 import SkeletonUsers from '../skeletons/skeleton-users/skeleton-users.component';
@@ -156,6 +156,88 @@ const Users = () => {
     // and now let's go back to the app.js 19 - file
     const { loading, users } = githubContent;
     // End of 4 -
+
+
+    if ( loading ) {
+
+        return (
+            [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ].map( ( number ) => <SkeletonUsers key={ number } /> )
+        )
+
+    }
+
+    else {
+
+        return (
+            <div className="users">
+
+                {
+                    users.map( ( user ) => (
+
+                        <UserItem
+                            key={ user.id }
+                            user={ user }
+                        />
+
+                    ) )
+                }
+
+            </div>
+        );
+
+    }
+
+};
+
+
+export default Users;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+
+
+
+
+
+
+
+
+
+
+
+// at the beginning of lecture 35, given all the notes, I created a new file below without
+// the notes so we are starting fresh
+
+
+import React, { useContext } from 'react';
+import UserItem from '../user-item/user-item.component';
+import SkeletonUsers from '../skeletons/skeleton-users/skeleton-users.component';
+
+import './users.styles.scss';
+
+import GithubContext from '../../context/github/github.context';
+
+
+const Users = () => {
+
+    // initialize the GithubContext by using the useContext() hook
+    // and now we will have access to githubContext.anything or anything that is in the
+    // GithubContext ( where the value property is the key ) in the GithubState component
+    const githubContent = useContext( GithubContext );
+
+    // now let's destructure off loading and users from the githubContext object
+    const { loading, users } = githubContent;
 
 
     if ( loading ) {

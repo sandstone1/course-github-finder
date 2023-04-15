@@ -305,7 +305,7 @@ export default User;
 
 
 
-
+/*
 import React, { Fragment, useContext, useEffect } from 'react';
 import Spinner from '../spinner/spinner.component';
 import Repos from '../repos/repos.component';
@@ -392,6 +392,208 @@ const User = ( { match } ) => {
     // component
 
     // End of 6 -
+
+
+   useEffect ( () => {
+
+        getUser( match.params.login );
+        getUserRepos( match.params.login );
+        // eslint-disable-next-line
+    }, [] );
+
+
+    // let's destructure " user "
+    const { 
+        name,
+        company,
+        avatar_url,
+        location,
+        bio,
+        blog,
+        login,
+        html_url,
+        followers,
+        following,
+        public_repos,
+        public_gists,
+        hireable
+    } = user;
+
+
+    if ( loading ) {
+
+        return (
+
+            <Spinner />
+
+        );
+
+    }
+    else {
+
+        return (
+
+            // our UI has a back button, hireable checkmark or x and 2 card elements
+            <div className="user">
+
+
+                { /* button */ /* }
+                <Link to="/" className="btn btn-blue user--back-button" style={ { marginRight: '2.0rem' } }>
+                    Back to Search
+                </Link>
+
+
+                { /* font awesome checkbox and applied differet color checkmark and the x */ /* }
+                <span>Hireable:</span>
+                { hireable ? (
+
+                    <i 
+                        className="fas fa-check text-success user--check"
+                    />
+
+                ) : (
+
+                    <i 
+                        className="fas fa-times-circle text-danger user--x"
+                    />
+
+                ) }
+
+
+                { /* 1st card and this card contains a 2 column grid */ /* }
+                <div className="card grid-2">
+
+                    { /* first column: image, name and location */ /* }
+                    <div className="all-center">
+                        <img
+                            src={ avatar_url }
+                            className="user--card-1-img"
+                            alt=""
+                        />
+                        <h2 className="user--card-1-h2">{ name }</h2>
+                        <p>Location: { location }</p>
+
+                    </div>
+
+                    { /* second column: bio, GitHub profile button and then 3 list items */ /* }
+                    <div>
+                        { bio && (
+                            <Fragment>
+                                <h3>Bio:</h3>
+                                <p>{ bio }</p>
+                            </Fragment>
+                        ) }
+                        <a
+                            href={ html_url }
+                            className="btn btn-blue my-1 user--github-button"
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            Visit GitHub Profile
+                        </a>
+                        <ul>
+                            <li>
+                                { login && (
+                                    <Fragment>
+                                        <strong>Username: </strong>&nbsp;{ login }
+                                    </Fragment>
+                                ) }
+                            </li>
+                            <li>
+                                { company && (
+                                    <Fragment>
+                                        <strong>Company: </strong>&nbsp;{ company }
+                                    </Fragment>
+                                ) }
+                            </li>
+                            <li>
+                                { blog && (
+                                    <Fragment>
+                                        <strong>Website: </strong>&nbsp;
+                                        <a href={ blog } rel="noreferrer" target="_blank">{ blog }</a>
+                                    </Fragment>
+                                ) }
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                { /* 2nd card and this card contains 4 badges */ /* }
+                <div className="card text-center">
+                    <div className="badge badge-blue">Followers: { followers }</div>
+                    <div className="badge badge-success">Following: { following }</div>
+                    <div className="badge badge-silver">Public Repos: { public_repos }</div>
+                    <div className="badge badge-medium">Public Gists: { public_gists }</div>
+                </div>
+
+
+                { /* 3nd card and we will pass " this.props.repos " to the repos property */ /* }
+                { /* and then this property will get passed into the Repos component */ /* }
+                <h3 className="user--card-3-h3">The Last 5 GitHub Repositories for { name }</h3>
+                <Repos />
+
+            </div>
+    
+        );
+
+    }
+
+}
+
+
+export default User;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// at the beginning of lecture 35, given all the notes, I created a new file below without
+// the notes so we are starting fresh
+
+
+import React, { Fragment, useContext, useEffect } from 'react';
+import Spinner from '../spinner/spinner.component';
+import Repos from '../repos/repos.component';
+import { Link } from 'react-router-dom';
+
+import './user.styles.scss';
+
+import GithubContext from '../../context/github/github.context';
+
+
+const User = ( { match } ) => {
+
+    // initialize the GithubContext
+    const githubContext = useContext( GithubContext );
+    const { user, getUser, getUserRepos, loading } = githubContext;
 
 
    useEffect ( () => {
